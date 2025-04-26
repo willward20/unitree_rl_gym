@@ -59,23 +59,6 @@ def play(args):
     plt.title('Average Rewards over steps')
     plt.show()
 
-    # Plot the rewards over each episode
-    # convert a list of torch tensors to a numpy array
-    # rewards = [r.cpu().numpy() for r in rewards]
-    # rewards = np.array(rewards)
-    # rewards = np.mean(rewards, axis=0)
-    # print("Mean rewards: ", np.mean(rewards))
-    # print("Std rewards: ", np.std(rewards))
-    # print("Max rewards: ", np.max(rewards))
-    # print("Min rewards: ", np.min(rewards))
-    # # plot the rewards using pyplot
-    # import matplotlib.pyplot as plt
-    # plt.plot(rewards)
-    # plt.xlabel('Episode')
-    # plt.ylabel('Reward')
-    # plt.title('Rewards over episodes')
-    # plt.show()
-
 if __name__ == '__main__':
     EXPORT_POLICY = True
     RECORD_FRAMES = False
