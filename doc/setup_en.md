@@ -62,11 +62,11 @@ Isaac Gym is a rigid body simulation and training framework provided by Nvidia.
 
 #### 2.2.1 Download
 
-Download [Isaac Gym](https://developer.nvidia.com/isaac-gym) from Nvidia’s official website.
+Download [Isaac Gym](https://developer.nvidia.com/isaac-gym) from Nvidia’s official website. On the website, click Download from Archive, agree to the license, and download. This will download a zip file. Note that the website says the software is for Ubuntu 18 and 20, but it works on 22 also. Extract the zip file.
 
 #### 2.2.2 Install
 
-After extracting the package, navigate to the `isaacgym/python` folder and install it using the following commands:
+After extracting the package, navigate to the `IsaacGym_Preview_4_Package/isaacgym/python` folder install it using the following commands:
 
 ```bash
 cd isaacgym/python
@@ -75,14 +75,18 @@ pip install -e .
 
 #### 2.2.3 Verify Installation
 
-Run the following command. If a window opens displaying 1080 balls falling, the installation was successful:
+Run the following command. (Note that `examples` is in the `isaacgym/python` directory). If a window opens displaying 1080 balls falling, the installation was successful:
 
 ```bash
 cd examples
 python 1080_balls_of_solitude.py
 ```
 
-If you encounter any issues, refer to the official documentation at `isaacgym/docs/index.html`.
+If you get an error about `libpython3.8.so.1.0`, you may need to export a python library to the path. In this case, use the following command, and then run the example script again:
+
+```
+export LD_LIBRARY_PATH=/home/arl2/miniconda3/envs/unitree-rl/lib:$LD_LIBRARY_PATH
+```
 
 ### 2.3 Install rsl_rl
 
