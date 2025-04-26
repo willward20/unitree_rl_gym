@@ -15,7 +15,7 @@ import torch
 def play(args):
     env_cfg, train_cfg = task_registry.get_cfgs(name=args.task)
     # override some parameters for testing
-    env_cfg.env.num_envs = min(env_cfg.env.num_envs, 100)
+    env_cfg.env.num_envs = min(env_cfg.env.num_envs, 100) # number of robots to deploy
     env_cfg.terrain.num_rows = 5
     env_cfg.terrain.num_cols = 5
     env_cfg.terrain.curriculum = False
@@ -39,14 +39,16 @@ def play(args):
         export_policy_as_jit(ppo_runner.alg.actor_critic, path)
         print('Exported policy as jit script to: ', path)
 
+    # Store the rewards for each environment at each step.
     rewards = torch.zeros([int(env.max_episode_length), env.num_envs], device=env.device)
 
     for i in range(int(env.max_episode_length)):
-        actions = policy(obs.detach())
+        actions = 2.5*torch.rand(100,12)
+        # actions = policy(obs.detach())
         obs, _, rews, dones, infos = env.step(actions.detach())
+
+        # Store the rewards for each environment at this step.
         rewards[i,:] = rews
-        if i % 100 == 0:
-            print(f"Episode: {i}/{int(env.max_episode_length)}")
 
     # Take an average of the rewards over all environments at each step
     rewards = torch.mean(rewards, dim=1)
@@ -58,23 +60,6 @@ def play(args):
     plt.ylabel('Average Reward')
     plt.title('Average Rewards over steps')
     plt.show()
-
-    # Plot the rewards over each episode
-    # convert a list of torch tensors to a numpy array
-    # rewards = [r.cpu().numpy() for r in rewards]
-    # rewards = np.array(rewards)
-    # rewards = np.mean(rewards, axis=0)
-    # print("Mean rewards: ", np.mean(rewards))
-    # print("Std rewards: ", np.std(rewards))
-    # print("Max rewards: ", np.max(rewards))
-    # print("Min rewards: ", np.min(rewards))
-    # # plot the rewards using pyplot
-    # import matplotlib.pyplot as plt
-    # plt.plot(rewards)
-    # plt.xlabel('Episode')
-    # plt.ylabel('Reward')
-    # plt.title('Rewards over episodes')
-    # plt.show()
 
 if __name__ == '__main__':
     EXPORT_POLICY = True

@@ -43,10 +43,10 @@ class LeggedRobotCfg(BaseConfig):
         resampling_time = 10. # time before command are changed[s]
         heading_command = True # if true: compute ang vel command from heading error
         class ranges:
-            lin_vel_x = [-1.0, 1.0] # min max [m/s]
-            lin_vel_y = [-1.0, 1.0]   # min max [m/s]
-            ang_vel_yaw = [-1, 1]    # min max [rad/s]
-            heading = [-3.14, 3.14]
+            lin_vel_x = [0.0, 1.0] # min max [m/s]
+            lin_vel_y = [0.0, 0.0]   # min max [m/s]
+            ang_vel_yaw = [0.0, 0.0]    # min max [rad/s]
+            heading = [0.0, 0.0]
 
     class init_state:
         pos = [0.0, 0.0, 1.] # x,y,z [m]
@@ -171,7 +171,7 @@ class LeggedRobotCfg(BaseConfig):
             contact_collection = 2 # 0: never, 1: last sub-step, 2: all sub-steps (default=2)
 
 class LeggedRobotCfgPPO(BaseConfig):
-    seed = 1
+    seed = 10
     runner_class_name = 'OnPolicyRunner'
     class policy:
         init_noise_std = 1.0

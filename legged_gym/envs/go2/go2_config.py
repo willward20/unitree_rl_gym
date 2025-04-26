@@ -45,6 +45,15 @@ class GO2RoughCfg( LeggedRobotCfg ):
             torques = -0.0002
             dof_pos_limits = -10.0
 
+    class runner:
+        max_iterations = 1500
+        learning_rate = 1e-3
+        max_steps_per_iter = 100 # 24 * 1000
+        gamma = 0.99
+
+    class env (LeggedRobotCfg.env):
+        num_envs = 100 #512
+
 class GO2RoughCfgPPO( LeggedRobotCfgPPO ):
     class algorithm( LeggedRobotCfgPPO.algorithm ):
         entropy_coef = 0.01
