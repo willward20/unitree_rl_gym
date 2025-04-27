@@ -1,4 +1,4 @@
-# Installation Guide
+# Installation and Usage Guide
 
 ## System Requirements
 
@@ -97,6 +97,7 @@ export LD_LIBRARY_PATH=/home/arl2/miniconda3/envs/unitree-rl/lib:$LD_LIBRARY_PAT
 Clone the repository using Git:
 
 ```bash
+cd
 git clone https://github.com/leggedrobotics/rsl_rl.git
 ```
 
@@ -122,7 +123,8 @@ pip install -e .
 Clone the repository using Git:
 
 ```bash
-git clone https://github.com/unitreerobotics/unitree_rl_gym.git
+cd
+git clone https://github.com/willward20/unitree_rl_gym.git
 ```
 
 #### 2.4.2 Install
@@ -134,30 +136,24 @@ cd unitree_rl_gym
 pip install -e .
 ```
 
-### 2.5 Install unitree_sdk2py (Optional)
+#### 2.4.3 Upgrade Numpy
 
-`unitree_sdk2py` is a library used for communication with real robots. If you need to deploy the trained model on a physical robot, install this library.
-
-#### 2.5.1 Download
-
-Clone the repository using Git:
+Upgrade numpy so that it's compatible with matplotlib.
 
 ```bash
-git clone https://github.com/unitreerobotics/unitree_sdk2_python.git
+pip install numpy==1.21.6
 ```
 
-#### 2.5.2 Install
+### 2.5 Run the Code
 
-Navigate to the directory and install it:
+Deploy 100 Go2 robot agents in Isaac Gym that were trained using policy gradient methods. The following command should load an Issac Gym window with the robots reployed. After 1001 steps in the simulation, a plot of the average rewards recieved at each step should pop up. 
 
 ```bash
-cd unitree_sdk2_python
-pip install -e .
+python legged_gym/scripts/play-2.py --task=go2
 ```
 
----
+Next, for comparison, repeat the experiment, but deploy agents that were trained using `unitree_rl_gym`'s built in PPO trainer.
 
-## Summary
-
-After completing the above steps, you are ready to run the related programs in the virtual environment. If you encounter any issues, refer to the official documentation of each component or check if the dependencies are installed correctly.
-
+```bash
+python legged_gym/scripts/play.py --task=go2
+```
