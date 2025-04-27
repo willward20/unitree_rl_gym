@@ -62,7 +62,7 @@ Isaac Gym is a rigid body simulation and training framework provided by Nvidia.
 
 #### 2.2.1 Download
 
-Download [Isaac Gym](https://developer.nvidia.com/isaac-gym) from Nvidia’s official website. On the website, click Download from Archive, agree to the license, and download. This will download a zip file. Note that the website says the software is for Ubuntu 18 and 20, but it works on 22 also. Extract the zip file.
+Download [Isaac Gym](https://developer.nvidia.com/isaac-gym) from Nvidia’s official website. On the website, click Download from Archive, agree to the license, and download. This will download a zip file. Note that the website says the software is for Ubuntu 18 and 20, but it works on 22 also. Extract the zip file. 
 
 #### 2.2.2 Install
 
@@ -94,7 +94,7 @@ export LD_LIBRARY_PATH=/home/arl2/miniconda3/envs/unitree-rl/lib:$LD_LIBRARY_PAT
 
 #### 2.3.1 Download
 
-Clone the repository using Git:
+Clone the repository into your home directory using Git:
 
 ```bash
 cd
@@ -103,7 +103,7 @@ git clone https://github.com/leggedrobotics/rsl_rl.git
 
 #### 2.3.2 Switch Branch
 
-Switch to the v1.0.2 branch:
+Switch to the v1.0.2 branch of rsl_rl:
 
 ```bash
 cd rsl_rl
@@ -120,7 +120,7 @@ pip install -e .
 
 #### 2.4.1 Download
 
-Clone the repository using Git:
+Clone the repository into your home directory using Git:
 
 ```bash
 cd
