@@ -151,9 +151,3 @@ Deploy 100 Go2 robot agents in Isaac Gym that were trained using policy gradient
 ```bash
 python legged_gym/scripts/play-2.py --task=go2
 ```
-
-Next, for comparison, repeat the experiment, but deploy agents that were trained using `unitree_rl_gym`'s built in PPO trainer.
-
-```bash
-python legged_gym/scripts/play.py --task=go2
-```
