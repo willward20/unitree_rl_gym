@@ -37,7 +37,7 @@ def test(args):
     act_dim = env.num_actions
 
     # Load a pre-trained neural network policy. 
-    model_path = os.path.join('logs/custom_go2/2025-04-26_12-11-53/checkpoints/model_150.pth')
+    model_path = os.path.join('logs/custom_go2/2025-04-27_16-51-52/checkpoints/model.pth')
     policy = load_policy(obs_dim, act_dim, env.device, model_path)
 
     # Store the rewards for each environment at each step.

@@ -48,7 +48,7 @@ class GO2RoughCfg( LeggedRobotCfg ):
     class runner:
         max_iterations = 1500
         learning_rate = 1e-3
-        max_steps_per_iter = 100 # 24 * 1000
+        max_steps_per_iter = 1000 # 24 * 1000
         gamma = 0.99
 
     class env (LeggedRobotCfg.env):

@@ -25,9 +25,9 @@ class PGRunner:
         self.num_envs = self.env.num_envs
 
         # Create a directory for logging training data and visualizing it in TensorBoard.
-        log_dir = os.path.join("logs", "custom_go2", f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}", "tensorboard")
-        os.makedirs(log_dir, exist_ok=True)
-        self.writer = SummaryWriter(log_dir)
+        self.log_dir = os.path.join("logs", "custom_go2", f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}")
+        os.makedirs(os.path.join(self.log_dir, "tensorboard"), exist_ok=True)
+        self.writer = SummaryWriter(self.log_dir)
 
     def rollout(self):
         # obs_buf = torch.zeros((self.max_steps, self.num_envs, self.obs_dim), device=self.device)
@@ -123,13 +123,13 @@ class PGRunner:
 
             # Save the model every 50 iterations.
             if it % 50 == 0:
-                save_path = os.path.join('logs', 'custom_go2', f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}", 'checkpoints', f"model_{it}.pth")
+                save_path = os.path.join(self.log_dir, 'checkpoints', f"model_{it}.pth")
                 os.makedirs(os.path.dirname(save_path), exist_ok=True)
                 torch.save(self.policy.state_dict(), save_path)
                 print(f"Saved policy to: {save_path}")
         
         # Save trained model
-        save_path = os.path.join('logs', 'custom_go2', f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}", 'checkpoints', 'model.pth')
+        save_path = os.path.join(self.log_dir, 'checkpoints', 'model.pth')
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
         torch.save(self.policy.state_dict(), save_path)
         print(f"Saved policy to: {save_path}")
